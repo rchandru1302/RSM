@@ -1,0 +1,492 @@
+/* General Body & Font Styling */
+body {
+    margin: 0;
+    font-family: 'Lato', sans-serif; /* For general text */
+    color: #333;
+    line-height: 1.6;
+    background-color: #f8f8f8;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', serif; /* For headings */
+    color: #4A0000; /* A deep maroon/brown for headings */
+}
+
+/* Background Container to hold the Trinity image */
+.background-container {
+    position: relative;
+    width: 100%;
+    min-height: 100vh; /* Ensures it covers at least the full viewport height */
+    overflow: hidden; /* Important to prevent image overflow if not perfectly sized */
+    display: flex; /* Use flex to control content layout */
+    flex-direction: column; /* Stack header, main, footer */
+}
+
+.background-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('C:\Users\Veena\OneDrive\Documents\Desktop\RamjayamSchoolofMusic\RSM\Trinity.jpeg'); /* <-- Update this path */
+    background-size: contain; /* Key property: scales the image to fit within the container */
+    background-repeat: no-repeat; /* Prevents repetition */
+    background-position: center center; /* Centers the image */
+    opacity: 0.1; /* Adjust opacity as desired (0.1 for 10%) */
+    z-index: -1; /* Puts the background behind other content */
+}
+
+/* Header Styling */
+.site-header {
+    background-color: rgba(255, 255, 255, 0.95); /* Slightly transparent white */
+    padding: 15px 0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    z-index: 10; /* Ensures header is above background */
+}
+
+.header-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.logo-area {
+    display: flex;
+    align-items: center;
+}
+
+.site-logo {
+    height: 60px; /* Adjust size as needed */
+    margin-right: 15px;
+}
+
+.site-title {
+    margin: 0;
+    font-size: 2em;
+    color: #6A0505; /* A richer maroon for the title */
+}
+
+.main-nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.main-nav li {
+    margin-left: 30px;
+}
+
+.main-nav a {
+    text-decoration: none;
+    color: #4A0000;
+    font-weight: 500;
+    font-size: 1.1em;
+    padding: 5px 0;
+    transition: color 0.3s ease;
+}
+
+.main-nav a:hover,
+.main-nav a.active { /* Add .active class for current page */
+    color: #B22222; /* A brighter accent for hover/active */
+}
+
+/* Hero Section */
+.hero-section {
+    flex-grow: 1; /* Allows hero section to take available space */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 80px 20px;
+    position: relative; /* Needed for z-index if content needs to be above background */
+    z-index: 1;
+}
+
+.hero-content {
+    background-color: rgba(255, 255, 255, 0.85); /* Slightly transparent white box for readability */
+    padding: 40px 60px;
+    border-radius: 8px;
+    max-width: 800px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.hero-content h2 {
+    font-size: 3em;
+    margin-bottom: 20px;
+    color: #4A0000;
+}
+
+.hero-content p {
+    font-size: 1.2em;
+    margin-bottom: 30px;
+    color: #555;
+}
+
+.btn {
+    display: inline-block;
+    background-color: #B22222; /* Button color */
+    color: #fff;
+    padding: 12px 25px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #8B0000; /* Darker button on hover */
+}
+
+/* Styling for the Carnatic Music Introduction Section */
+#carnatic-intro {
+    background: url('Trinity.jpeg') no-repeat center center/cover; /* REPLACE WITH YOUR IMAGE */
+    color: #f0f0f0; /* Light text for contrast */
+    padding: 0px 0px;
+    background-size: 100% 100%;       /* Shrinks image to fit inside the container */
+    background-repeat: no-repeat;   /* Prevents tiling */
+    position: relative;
+    text-align: center;
+    overflow: hidden; /* Ensure content doesn't spill if overlay is smaller */
+}
+
+/* Background image of Carnatic Trinity */
+/* We will generate this image separately for you */
+#carnatic-intro {
+    /* ... (background image properties as above) ... */
+}
+
+/* Overlay for better text readability on the background image */
+#carnatic-intro .overlay {
+    background-color: rgba(0, 0, 0, 0.65); /* Darker overlay for strong contrast */
+    padding: 40px;
+    border-radius: 10px;
+    max-width: 900px;
+    margin: 0 auto;
+    position: relative; /* To ensure z-index works if needed */
+    z-index: 1; /* Ensure overlay content is above the background image */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+#carnatic-intro h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.2em;
+    color: #ffd700; /* Gold color for heading */
+    margin-bottom: 25px;
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.7);
+}
+
+#carnatic-intro .lead-paragraph {
+    font-size: 1.25em;
+    margin-bottom: 40px;
+    line-height: 1.8;
+    color: #e0e0e0;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#carnatic-intro .scriptural-verses {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    background-color: rgba(255, 255, 255, 0.1); /* Slightly lighter background for the verse box */
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: inset 0 0 15px rgba(255, 215, 0, 0.3); /* Inner gold glow */
+}
+
+#carnatic-intro .scriptural-verses h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2em;
+    color: #ffcc00; /* Another shade of gold */
+    margin-bottom: 30px;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+}
+
+.verse-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    margin-top: 30px;
+}
+
+.verse-item {
+    background-color: rgba(139, 69, 19, 0.85); /* Earthy brown with transparency */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+    border: 1px solid #ffcc00; /* Gold border */
+    text-align: left;
+}
+
+.verse-item h4 {
+    font-family: 'Georgia', serif;
+    font-size: 1.3em;
+    color: #ffdd55; /* Lighter gold for verse title */
+    margin-bottom: 10px;
+}
+
+.verse-item .sanskrit {
+    font-family: 'Noto Sans Devanagari', sans-serif; /* Recommended for Devanagari script */
+    font-size: 1.1em;
+    color: #fff;
+    font-style: italic;
+    margin-bottom: 8px;
+}
+
+.verse-item .translation {
+    font-size: 0.95em;
+    color: #e0e0e0;
+}
+
+#carnatic-intro .conclusion-text {
+    font-size: 1.1em;
+    margin-top: 40px;
+    line-height: 1.7;
+    color: #e0e0e0;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Responsive adjustments for the Carnatic section */
+@media (max-width: 768px) {
+    #carnatic-intro .overlay {
+        padding: 25px;
+    }
+    #carnatic-intro h2 {
+        font-size: 2.5em;
+    }
+    #carnatic-intro .lead-paragraph {
+        font-size: 1.1em;
+    }
+    #carnatic-intro .scriptural-verses h3 {
+        font-size: 1.8em;
+    }
+    .verse-grid {
+        grid-template-columns: 1fr;
+    }
+    .verse-item h4 {
+        font-size: 1.2em;
+    }
+    .verse-item .sanskrit {
+        font-size: 1em;
+    }
+}
+
+@media (max-width: 480px) {
+    #carnatic-intro h2 {
+        font-size: 2em;
+    }
+    #carnatic-intro .lead-paragraph {
+        font-size: 1em;
+    }
+    #carnatic-intro .scriptural-verses h3 {
+        font-size: 1.5em;
+    }
+}
+
+
+/* Highlights Grid */
+.highlight-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.highlight-item {
+    background: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.highlight-item:hover {
+    transform: translateY(-5px);
+}
+
+.highlight-item h3 {
+    color: #8d6e63;
+    margin-bottom: 10px;
+}
+
+/* Testimonials Carousel (basic styling, JS would handle actual carousel) */
+.testimonial-carousel {
+    display: flex;
+    overflow-x: auto; /* For basic scrolling if many */
+    scroll-snap-type: x mandatory;
+    margin-top: 30px;
+    padding-bottom: 20px;
+   /*display: block; */
+}
+
+
+.testimonial-item {
+    flex: 0 0 100%; /* Each item takes full width of container */
+    padding: 30px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    margin-right: 20px;
+    text-align: center;
+    scroll-snap-align: start;
+    min-width: 300px; /* Ensure a minimum width */
+}
+
+.testimonial-item p {
+    font-style: italic;
+    font-size: 1.1em;
+    margin-bottom: 15px;
+    color: #555;
+    /*transition: opacity 0.5s ease-in-out; */ 
+}
+
+.testimonial-item span {
+    font-weight: bold;
+    color: #8d6e63;
+}
+
+/* News Grid */
+.news-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.news-item {
+    background: #fff;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.news-item h3 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    color: #5d4037;
+}
+
+.news-item p {
+    font-size: 0.95em;
+    color: #666;
+    margin-bottom: 15px;
+}
+
+/* Footer */
+footer {
+    background: #5d4037;
+    color: #f0f0f0;
+    padding: 40px 0;
+    text-align: center;
+}
+
+footer .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.footer-nav ul {
+    list-style: none;
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.footer-nav ul li {
+    margin: 0 15px;
+}
+
+.footer-nav ul li a {
+    color: #f0f0f0;
+    font-weight: normal;
+    transition: color 0.3s ease;
+}
+
+.footer-nav ul li a:hover {
+    color: #fff;
+    text-decoration: underline;
+}
+
+.social-links {
+    margin-bottom: 20px;
+}
+
+.social-links img {
+    height: 30px; /* Adjust icon size */
+    margin: 0 10px;
+    transition: transform 0.3s ease;
+}
+
+.social-links img:hover {
+    transform: translateY(-3px);
+}
+
+footer p {
+    font-size: 0.9em;
+    color: #ccc;
+}
+
+.gallery-item {
+  display: flex;
+  flex-direction: column;
+  border: 2px solid #ccc; /* Adjust thickness and color */
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  background-color: #fff;
+  text-align: center;
+}
+
+
+/* Footer Styling */
+/*.site-footer {
+    background-color: rgba(255, 255, 255, 0.95);
+    padding: 20px;
+    text-align: center;
+    font-size: 0.9em;
+    color: #666;
+    box-shadow: 0 -2px 5px rgba(0,0,0,0.05);
+    z-index: 10; /* Ensures footer is above background */
+/*}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .header-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .main-nav ul {
+        margin-top: 15px;
+        flex-wrap: wrap; /* Allow navigation items to wrap */
+        justify-content: center;
+    }
+
+    .main-nav li {
+        margin: 0 10px 10px; /* Adjust spacing for smaller screens */
+    }
+
+    .site-title {
+        font-size: 1.8em;
+    }
+
+    .hero-content {
+        padding: 30px;
+    }
+
+    .hero-content h2 {
+        font-size: 2.2em;
+    }
+
+    .hero-content p {
+        font-size: 1em;
+    }
+}

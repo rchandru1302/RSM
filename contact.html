@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+<script>
+  (function() {
+    emailjs.init("OyRLSbEr1TawS3JaA"); // Replace with your actual public key
+  })();
+</script>
+
+     
+ 
+  <meta charset="UTF-8">
+  <title>Contact Us</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #fdfdfd;
+      margin: 0;
+      padding: 0;
+      color: #333;
+    }
+    header {
+      background-color: #4b2e83;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    .container {
+      max-width: 600px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+    form {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+    input, select, textarea {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 1em;
+    }
+    button {
+      margin-top: 20px;
+      background-color: #4b2e83;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-size: 1em;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #3a256b;
+    }
+    .error {
+      color: red;
+      font-size: 0.9em;
+    }
+  </style>
+</head>
+<body>
+
+         <header class="site-header">
+            <div class="header-content">
+                <div class="logo-area">
+                    <img src="C:\Users\Veena\OneDrive\Documents\Desktop\RamjayamSchoolofMusic\RSM\Ramjayam_logo.png" alt="Ramjayam School of Music Logo" class="site-logo">
+                    <h1 class="site-title">Ramjayam School of Music</h1>
+                </div>
+                <nav class="main-nav">
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                      <li><a href="about.html">About Us</a></li>
+                        <li><a href="services.html">Our Services</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="events.html">Events</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+<header>
+  <h1>Contact Us</h1>
+</header>
+
+<div class="container">
+  <form id="contactForm">
+    <label for="name">Name *</label>
+    <input type="text" id="name" required>
+
+    <label for="parentName">Parent Name</label>
+    <input type="text" id="parentName">
+
+    <label for="email">Email Address *</label>
+    <input type="email" id="email" required>
+
+    <label for="whatsapp">WhatsApp Contact Number *</label>
+    <input type="tel" id="whatsapp" required>
+
+    <label for="class">Class Interested In *</label>
+    <select id="class" required onchange="updateLevelOptions()">
+      <option value="">-- Select --</option>
+      <option value="Vocal">Vocal</option>
+      <option value="Veena">Veena</option>
+      <option value="Mridangam">Mridangam</option>
+    </select>
+
+    <label for="level">Level *</label>
+    <select id="level" required>
+      <option value="">-- Select Class First --</option>
+    </select>
+
+    <label for="comments">Comments</label>
+    <textarea id="comments" rows="4"></textarea>
+
+    <button type="submit">Submit</button>
+    <div id="formMessage" class="error"></div>
+  </form>
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>

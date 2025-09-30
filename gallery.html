@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Gallery</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #fdfdfd;
+      margin: 0;
+      padding: 0;
+      color: #333;
+    }
+    header {
+      background-color: #4b2e83;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    .container {
+      max-width: 1000px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+    }
+    .gallery-item {
+      background-color: #fff;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    .gallery-item img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    .caption {
+      padding: 15px;
+      font-size: 0.95em;
+      color: #4b2e83;
+    }
+    footer {
+      background-color: #eee;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: #666;
+    }
+  </style>
+</head>
+<body>
+       <header class="site-header">
+            <div class="header-content">
+                <div class="logo-area">
+                    <img src="C:\Users\Veena\OneDrive\Documents\Desktop\RamjayamSchoolofMusic\RSM\Ramjayam_logo.png" alt="Ramjayam School of Music Logo" class="site-logo">
+                    <h1 class="site-title">Ramjayam School of Music</h1>
+                </div>
+                <nav class="main-nav">
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                      <li><a href="about.html">About Us</a></li>
+                        <li><a href="services.html">Our Services</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="events.html">Events</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+<header>
+  <h1>Gallery</h1>
+</header>
+
+<div class="container">
+  <div class="gallery-grid">
+
+    <div class="gallery-item">
+      <img src="images/rsj_emani_award.jpg" alt="rsj_emani_award">
+      <div class="caption">Receiving the Dr. Emani Shankara Sastri Memorial Award 2025</div>
+    </div>
+
+    <div class="gallery-item">
+      <img src="images/rsj_acharyanet.jpg" alt="rsj_acharyanet">
+      <div class="caption">Lecture Demonstration for Archaryanet</div>
+    </div>
+
+    <div class="gallery-item">
+      <img src="images/rsj_ariaUniv.jpg" alt="rsj_ariaUniv">
+      <div class="caption">On the Aria University (US based) website</div>
+    </div>
+
+    <div class="gallery-item">
+      <img src="images/rsj_at_singapore.jpg" alt="rsj_at_singapore">
+      <div class="caption">Flyer showing Dr. RSJ's performance at Singapore</div>
+    </div>
+
+    <div class="gallery-item">
+      <img src="images/rsj_lecdem_rrsabha.jpg" alt="rsj_lecdem_rrsabha">
+      <div class="caption">Lecture Demonstration at RR Sabha</div>
+    </div>
+
+    <div class="gallery-item">
+      <img src="images/rsj_thehindu.jpg" alt="rsj_thehindu">
+      <div class="caption">Dr. RS Jayalakshmi's performance at The Music Academy covered by The Hindu</div>
+    </div>
+
+    <div class="gallery-item">
+      <img src="images/rsj_vainikamudhra.jpg" alt="rsj_vainikamudhra">
+      <div class="caption">Dr. RSJ receives an award from Mudhra</div>
+    </div>
+
+  </div>
+</div>
+
+
+    <footer>
+        <div class="container">
+            <div class="footer-nav">
+                <ul>
+                    <li><a href="index.html" style="color: #4b2e83;">Home</a></li>
+                    <li><a href="about.html" style="color: #4b2e83;">About Us</a></li>
+                    <li><a href="services.html" style="color: #4b2e83;">Services</a></li>
+                    <li><a href="contact.html" style="color: #4b2e83;">Contact</a></li>
+                </ul>
+            </div>
+            <!-- <div class="social-links">
+                <a href="#" target="_blank"><img src="icon-facebook.png" alt="Facebook"></a>
+                <a href="#" target="_blank"><img src="icon-instagram.png" alt="Instagram"></a>
+                <!-- Add more social icons as needed
+            </div> -->
+            <p>&copy; 2023 Ramjayam. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+
+</body>
+</html>

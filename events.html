@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Event Page - Updating Soon</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #4b2e83, #8e44ad);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
+    }
+    .message-box {
+      font-size: 2.5em;
+      font-weight: bold;
+      max-width: 800px;
+      padding: 40px;
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      animation: fadeIn 1.5s ease-in-out;
+    }
+    .home-button {
+      margin-top: 30px;
+      background-color: white;
+      color: #4b2e83;
+      border: none;
+      padding: 12px 24px;
+      font-size: 1em;
+      border-radius: 6px;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    .home-button:hover {
+      background-color: #f0f0f0;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="message-box">
+    This page is currently <br> <strong>BEING UPDATED</strong><br><br>
+    It will be available soon with fresh content!
+    <br><br>
+    <a href="index.html" class="home-button">Back to Home</a>
+  </div>
+
+  <script>
+    setTimeout(() => {
+      window.location.href = "index.html";
+    }, 10000); // Redirect after 10 seconds
+  </script>
+
+</body>
+</html>
