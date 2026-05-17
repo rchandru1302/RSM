@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EduQuiz – Class X MCQ Practice</title>
+  <meta name="description" content="AI-powered MCQ practice for CBSE/ICSE Class X students. Math, Physics, Chemistry, Biology." />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📚</text></svg>" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body data-page="temp">
+
+<!-- ── HEADER ──────────────────────────────── -->
+<header class="app-header">
+  <div class="inner">
+    <div class="logo" id="logoBtn" role="button" tabindex="0" aria-label="Go to home">
+      <div class="logo-icon">📚</div>
+      <div class="logo-text">Edu<span>Quiz</span></div>
+    </div>
+    <div class="nav-actions">
+      <button class="btn btn-ghost btn-sm" id="changeApiKeyBtn" onclick="document.getElementById('page-apikey').classList.add('active');document.querySelectorAll('.page').forEach(p=>p!==document.getElementById('page-apikey')&&p.classList.remove('active'))">
+        🔑 API Key
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- ════════════════════════════════════════════
+     PAGE 1 – API KEY SETUP
+════════════════════════════════════════════ -->
+<div id="page-apikey" class="page">
+  <div class="container">
+    <div style="text-align:center;padding:40px 0 28px">
+      <div class="hero-badge">⚡ Powered by Google Gemini AI</div>
+      <h2 style="margin-bottom:8px">Connect Your API Key</h2>
+      <p>Enter your Google Gemini API key to enable AI-generated MCQs</p>
+    </div>
+
+    <div class="apikey-wrap">
+      <div class="card">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px">
+          <h3 style="font-size:1rem">Google Gemini API Key</h3>
+          <span id="apiKeyStatus" class="api-status invalid">
+            <span class="api-status-dot"></span>Not Set
+          </span>
+        </div>
+
+        <div class="form-group" style="margin-bottom:16px">
+          <label class="form-label" for="apiKeyInput">API Key</label>
+          <div class="input-wrap">
+            <span class="input-icon">🔐</span>
+            <input type="password" id="apiKeyInput" class="form-control"
+              placeholder="AIza…" autocomplete="off" spellcheck="false" />
+            <button class="btn btn-ghost btn-sm input-action" id="toggleKeyVisibility"
+              title="Toggle visibility" style="padding:4px 8px">👁</button>
+          </div>
+        </div>
+
+        <div class="form-group" style="margin-bottom:24px">
+          <label class="form-label" for="boardSelect">Board</label>
+          <select id="boardSelect" class="form-control">
+            <option value="CBSE">CBSE</option>
+            <option value="ICSE">ICSE</option>
+          </select>
+        </div>
+
+        <button class="btn btn-primary btn-full btn-lg" id="saveApiKey">
+          Save & Continue →
+        </button>
+
+        <div class="divider"></div>
+
+        <div style="background:var(--bg3);border-radius:var(--radius-sm);padding:14px 16px;border:1px solid var(--border)">
+          <div style="font-size:12px;color:var(--text3);line-height:1.7">
+            <strong style="color:var(--text2);display:block;margin-bottom:4px">🔒 Privacy Note</strong>
+            Your API key is stored locally in your browser only. It is never sent to any server other than Google's API endpoint.
+            <br/><br/>
+            <a href="https://aistudio.google.com/apikey" target="_blank"
+              style="color:var(--accent3);text-decoration:none;font-size:12px">
+              Get a free Gemini API key at Google AI Studio →
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════
+     PAGE 2 – QUIZ SETUP
+════════════════════════════════════════════ -->
+<div id="page-setup" class="page">
+  <div class="container">
+
+    <div class="hero">
+      <div class="hero-badge">🎓 Class X · CBSE &amp; ICSE</div>
+      <h1>Practice <span class="highlight">MCQs</span></h1>
+      <p>Select your subject, topic, and difficulty level to generate 30 AI-powered questions tailored to your syllabus.</p>
+    </div>
+
+    <!-- Subject Selection -->
+    <div class="setup-section">
+      <div class="section-label">01 · Choose Subject</div>
+      <div class="grid-4" id="subjectGrid">
+        <!-- Rendered by JS -->
+      </div>
+    </div>
+
+    <!-- Topic Selection -->
+    <div class="setup-section" id="topicSection" style="display:none">
+      <div class="section-label">02 · Choose Topic</div>
+      <div class="form-group">
+        <select id="topicSelect" class="form-control" style="font-size:15px;padding:13px 14px">
+          <option value="">— Select a topic —</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Difficulty -->
+    <div class="setup-section">
+      <div class="section-label">03 · Difficulty Level</div>
+      <div class="grid-3" id="difficultyGrid">
+        <!-- Rendered by JS -->
+      </div>
+    </div>
+
+    <!-- Mode & Timer -->
+    <div class="setup-section">
+      <div class="section-label">04 · Mode &amp; Timer</div>
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <div class="toggle-row">
+          <div class="toggle-info">
+            <span class="toggle-name">🎮 Practice Mode</span>
+            <span class="toggle-desc">Answers revealed instantly after each selection</span>
+          </div>
+          <label class="toggle">
+            <input type="checkbox" id="practiceModeToggle" checked />
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+        <div class="toggle-row">
+          <div class="toggle-info">
+            <span class="toggle-name">⏱ Enable Timer</span>
+            <span class="toggle-desc">45 minutes for 30 questions (exam simulation)</span>
+          </div>
+          <label class="toggle">
+            <input type="checkbox" id="timerToggle" />
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <div style="padding-bottom:40px">
+      <button class="btn btn-primary btn-full btn-lg" id="startQuizBtn">
+        🚀 Generate &amp; Start Quiz
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════
+     PAGE 3 – LOADING
+════════════════════════════════════════════ -->
+<div id="page-loading" class="page">
+  <div class="container">
+    <div class="loading-wrap" style="min-height:70vh">
+      <div class="spinner"></div>
+      <div>
+        <div class="loading-text" id="loadingMsg">Generating your questions…</div>
+        <div class="loading-subtext" style="text-align:center;margin-top:6px">This usually takes 15–30 seconds</div>
+      </div>
+      <div style="width:100%;max-width:360px">
+        <div style="display:flex;justify-content:space-between;font-size:11px;color:var(--text3);margin-bottom:6px">
+          <span>Batch progress</span>
+          <span id="loadingBatchLabel">0 / 30 questions</span>
+        </div>
+        <div style="background:var(--bg3);height:6px;border-radius:3px;overflow:hidden">
+          <div id="loadingBatchBar" style="height:100%;width:0%;background:linear-gradient(90deg,var(--accent),var(--accent2));border-radius:3px;transition:width 0.5s ease"></div>
+        </div>
+      </div>
+      <div style="background:var(--bg3);border:1px solid var(--border);border-radius:var(--radius-sm);padding:12px 20px;max-width:360px;text-align:center">
+        <div style="font-size:12px;color:var(--text3);line-height:1.6">
+          Asking Gemini AI to craft 30 unique questions<br/>
+          tailored to your syllabus and difficulty level
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════
+     PAGE 4 – QUIZ
+════════════════════════════════════════════ -->
+<div id="page-quiz" class="page">
+  <div class="container">
+
+    <!-- Quiz header -->
+    <div class="quiz-header">
+      <div class="quiz-meta" id="quizHeaderMeta"></div>
+      <div style="display:flex;align-items:center;gap:10px">
+        <span class="q-counter" id="qCounter">Q1 / 30</span>
+        <div id="timerSection" style="display:none">
+          <div class="timer-wrap">
+            <span style="font-size:13px;color:var(--text3)">⏱</span>
+            <span class="timer-display" id="timerDisplay">45:00</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Progress bar -->
+    <div class="progress-bar-wrap">
+      <div class="progress-bar-fill" id="quizProgress" style="width:3.33%"></div>
+    </div>
+
+    <!-- Question mini-map -->
+    <div class="q-map-wrap">
+      <div class="q-map-title">Question Navigator</div>
+      <div class="q-map" id="qMapDots"></div>
+      <div style="display:flex;gap:14px;margin-top:10px;flex-wrap:wrap">
+        <span style="font-size:11px;color:var(--green);display:flex;align-items:center;gap:4px">
+          <span style="width:8px;height:8px;border-radius:2px;background:rgba(62,207,142,.3);display:inline-block"></span>Answered
+        </span>
+        <span style="font-size:11px;color:var(--accent);display:flex;align-items:center;gap:4px">
+          <span style="width:8px;height:8px;border-radius:2px;background:rgba(245,166,35,.3);display:inline-block"></span>Flagged
+        </span>
+        <span style="font-size:11px;color:var(--accent3);display:flex;align-items:center;gap:4px">
+          <span style="width:8px;height:8px;border-radius:2px;background:rgba(91,141,238,.3);display:inline-block"></span>Current
+        </span>
+        <span style="font-size:11px;color:var(--text3);display:flex;align-items:center;gap:4px">
+          <span style="width:8px;height:8px;border-radius:2px;background:var(--bg3);display:inline-block"></span>Unattempted
+        </span>
+      </div>
+    </div>
+
+    <!-- Question card -->
+    <div class="question-card">
+      <div class="q-number" id="qNumber">Question 1</div>
+      <div class="q-text" id="qText"></div>
+      <div class="options-grid" id="optionsWrap"></div>
+    </div>
+
+    <!-- Navigation -->
+    <div class="quiz-nav">
+      <div class="quiz-nav-left">
+        <button class="btn btn-secondary" id="prevBtn">← Prev</button>
+        <button class="flag-btn" id="flagBtn" title="Flag this question">🚩</button>
+      </div>
+      <div class="quiz-nav-right">
+        <button class="btn btn-secondary btn-sm" id="finishBtn">Finish Quiz</button>
+        <button class="btn btn-secondary" id="nextBtn">Next →</button>
+      </div>
+    </div>
+
+    <div style="height:40px"></div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════
+     PAGE 5 – RESULTS
+════════════════════════════════════════════ -->
+<div id="page-results" class="page">
+  <div class="container">
+
+    <div style="text-align:center;padding:24px 0 8px">
+      <h2>Quiz Complete!</h2>
+      <div id="resultMessage" style="color:var(--text2);margin-top:8px;font-size:1rem"></div>
+    </div>
+
+    <!-- Score Ring -->
+    <div class="score-ring-wrap" id="resultScoreRing"></div>
+
+    <!-- Meta -->
+    <div id="resultMeta"></div>
+
+    <!-- Stats -->
+    <div class="result-stats" id="resultStats"></div>
+
+    <!-- Action buttons -->
+    <div style="display:flex;gap:10px;margin-bottom:32px;flex-wrap:wrap">
+      <button class="btn btn-primary btn-lg" id="retryBtn" style="flex:1">
+        🔄 Try Again (Same Settings)
+      </button>
+      <button class="btn btn-secondary btn-lg" id="newTopicBtn" style="flex:1">
+        📚 Choose New Topic
+      </button>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- Review section -->
+    <div>
+      <h3 style="margin-bottom:16px">Question Review</h3>
+
+      <!-- Filter tabs -->
+      <div id="reviewTabs" style="display:flex;gap:8px;margin-bottom:20px;flex-wrap:wrap">
+        <button class="btn btn-sm active-tab" data-filter="all" style="background:var(--bg3);border:1px solid var(--border);color:var(--text)">All</button>
+        <button class="btn btn-sm" data-filter="wrong" style="background:rgba(248,113,113,.1);border:1px solid rgba(248,113,113,.2);color:var(--red)">Wrong</button>
+        <button class="btn btn-sm" data-filter="correct" style="background:rgba(62,207,142,.1);border:1px solid rgba(62,207,142,.2);color:var(--green)">Correct</button>
+        <button class="btn btn-sm" data-filter="skipped" style="background:var(--bg3);border:1px solid var(--border);color:var(--text3)">Skipped</button>
+      </div>
+
+      <div id="reviewContainer"></div>
+    </div>
+
+    <div style="height:48px"></div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════
+     CONFIRM MODAL
+════════════════════════════════════════════ -->
+<div class="modal-overlay" id="confirmModal">
+  <div class="modal">
+    <h3>Finish Quiz?</h3>
+    <p id="confirmMsg">Are you sure you want to finish the quiz?</p>
+    <div class="modal-actions">
+      <button class="btn btn-secondary" id="cancelFinish">Cancel</button>
+      <button class="btn btn-primary" id="confirmFinish">Finish &amp; See Results</button>
+    </div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<!-- Scripts -->
+<script src="js/data.js"></script>
+<script src="js/app.js"></script>
+
+<style>
+  /* Active tab style */
+  .active-tab {
+    background: var(--bg3) !important;
+    border-color: var(--accent3) !important;
+    color: var(--accent3) !important;
+  }
+</style>
+
+</body>
+</html>
